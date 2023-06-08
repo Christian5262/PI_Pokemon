@@ -3,6 +3,8 @@ const axios = require("axios");
 require('dotenv').config();
 const { URL } = process.env
 
+
+//Variable para saber si los pokemon ya estan en cache
 let pokemonInCache = null
 
 const getPokemonsApi = async () => {
@@ -16,6 +18,7 @@ const getPokemonsApi = async () => {
                 const { data } = await axios.get(pokemon.url)
                 return data
             })
+            //Almaceno en una variable todas las promesas resolvidas
             let allPokemon = (await Promise.all(pokemonsinApi))
             for (let i = 0; i < allPokemon.length; i++) {
                 const pokemon = allPokemon[i]
@@ -26,7 +29,7 @@ const getPokemonsApi = async () => {
                     health: pokemon.stats[0].base_stat,
                     attack: pokemon.stats[1].base_stat,
                     defense: pokemon.stats[2].base_stat,
-                    speed: pokemon.stats[3].base_stat,
+                    speed: pokemon.stats[5].base_stat,
                     height: pokemon.height,
                     weight: pokemon.weight,
                     type: pokemon.types.map(type =>
@@ -35,6 +38,7 @@ const getPokemonsApi = async () => {
                 }
                 pokemons.push(pokemonInfo)
             }
+            //Ahora la url, va a ser en lo que este en la propiedad de next
             urlApi = data.next
         }
         pokemonInCache = pokemons
