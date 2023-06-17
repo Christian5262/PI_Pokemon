@@ -3,6 +3,7 @@
 
 position:sticky;
 display: flex;
+flex-wrap: wrap;
 width: 245px;
 height: 248px;
 margin: 10vh;

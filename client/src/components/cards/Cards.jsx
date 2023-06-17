@@ -1,47 +1,33 @@
+import { useSelector } from "react-redux";
 import Card from "../card/Card";
 import styles from "./Cards.module.css"
+import { useLocation } from "react-router-dom";
 
-const Cards = () => {
+const Cards = ({ pokemonInPage, page }) => {
 
-    const pokemon = [
-        {
-            id: 1,
-            name: "Bulbasur",
-            image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-            health: 86
-        },
-        {
-            id: 2,
-            name: "Charmander",
-            image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-            health: 90
-        },
-        {
-            id: 3,
-            name: "Squirtle",
-            image : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-            health: 76
-        }
-        , {
-            id: 4,
-            name: "Pikachu",
-            image : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-            health: 96
-        }
-    ]
+
+    const pagina = useSelector(state => state.currentPage)
+
+    let num = 0
+    for(let i = 0; i < pokemonInPage.length; i++){
+        num = pokemonInPage[i].find(l => l.id===Number(pagina))
+    }
+    
+
 
     return (
         <div>
             {
-                pokemon.map(poke => {
+                pokemonInPage[page]?.map(poke => {
                     return (
-                        <div className={styles.contains}>
+                        <div key={poke.id} className={styles.contains}>
                             <Card
                                 key={poke.id}
                                 id={poke.id}
-                                name={poke.name}
-                                image={poke.image}
-                                health={poke.health}
+                                name={poke?.name}
+                                imagen={poke?.imagen}
+                                type={poke?.type}
+                                page={page}
                             />
                         </div>
                     )

@@ -3,13 +3,13 @@ const getDetailPokemon = require("../controllers/getDetailPokemon.js");
 const getPokemonByName = require("../controllers/getPokemonByName.js");
 
 const getPokemon = async (req, res) => {
-    const { name } = req.query
+    const { name, type } = req.query
     const pokemon = await getAllPokemonsApi()
     try {
-        if (!name) {
+        if (!name && !type) {
             return res.status(200).json(pokemon)
         }
-        const pokemonByName = await getPokemonByName(name)
+        const pokemonByName = await getPokemonByName(pokemon, name, type)
         return res.status(200).json(pokemonByName)
     } catch (error) {
         return res.status(200).json(error.message)

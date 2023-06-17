@@ -6,7 +6,7 @@ import { validate } from "./validate";
 const CreatePokemon = () => {
 
     const typesPokemon = useSelector(state => state.types)
-    const createPokemon = useSelector(state => state.pokemons)
+    // const createPokemon = useSelector(state => state.pokemons)
     const dispatch = useDispatch()
 
     const [input, setInput] = useState({
@@ -40,19 +40,34 @@ const CreatePokemon = () => {
     }
 
     const handlePushTypes = (event) => {
+
+        const findId = input.typeId.findIndex(id => id === +event.target.value)
+        if (findId === -1) {
+            if (input.typeId.length === 3) return "Solo se puede agregar 3 tipos"
+            setInput({
+                ...input,
+                typeId: [...input.typeId, +event.target.value]
+            })
+            return
+        }
+        const array = [...input.typeId]
+        array.splice(findId, 1)
         setInput({
             ...input,
-            typeId: [...input.typeId, +event.target.value]
+            typeId: array
         })
+
+
+
+
     }
+
 
     const onSubmit = (event) => {
         event.preventDefault()
         dispatch(postPokemon(input))
 
     }
-
-    console.log(input);
 
     return (
         <div>
@@ -84,24 +99,21 @@ const CreatePokemon = () => {
                 <label htmlFor="">Peso</label>
                 <input type="number" name="weight" value={input.weight} onChange={handleChange} />
                 <br />
-                <label>Tipos</label>
-
                 {
                     typesPokemon?.map(type => {
-                        return (<input type="radio"/>)
+                        const alreadyExist = input.typeId.find(id => id === type.id)
+                        return (
+                            <label key={type.id}>{type.name}<input type="checkbox" onChange={handlePushTypes}
+                                value={type.id
+                                }
+                                checked={!!alreadyExist}
+                                disabled={input.typeId.length === 3 && !alreadyExist}
+                            />
+                                <br />
+                            </label>
+                        )
                     })
                 }
-                
-                <select onChange={handlePushTypes}>
-                    <option>Seleccionar tipo</option>
-                    {
-                        typesPokemon?.map(type => {
-                            return (<option key={type.id} value={type.id}>
-                                {type.name}
-                            </option>)
-                        })
-                    }
-                </select>
                 <br />
                 <button type="submit" disabled>Crear pokemon</button>
             </form>

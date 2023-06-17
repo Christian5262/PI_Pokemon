@@ -1,0 +1,23 @@
+.contain{
+    background-color: aqua;
+    background-image: url("../../images/6776c-clickwallpapers-pokemon-4k-img2-scaled-1.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 2000px;
+    background-attachment: fixed ;
+    background-size: cover;
+    position: relative;
+}
+
+.button{
+    position: absolute;
+    top : 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.editButton{
+    border-radius: 30px;
+    height: 5vh;
+}
