@@ -18,6 +18,7 @@ const Detail = () => {
         navigate(-1)
     }
 
+
     useEffect(() => {
         dispatch(currentPage(id))
         dispatch(getDetailPokemon(id))
@@ -26,19 +27,20 @@ const Detail = () => {
 
     const previousPath = localStorage.getItem("previousPath") || "/"
     return (
-        <div>
+        <div className="pokemon">
 
-            <button onClick={() => { handleBack() }}>Back To Home</button>
-            <h1>{detail.id}</h1>
+            <button className="button_home" onClick={() => { handleBack() }}>Back To Home</button>
+            <h1>{"#"+detail.id}</h1>
             <h1>{detail.name}</h1>
             <img src={detail.imagen} alt={detail.name} />
-            <h3>{detail.health}</h3>
-            <h3>{detail.attack}</h3>
-            <h3>{detail.defense}</h3>
-            <h3>{detail?.speed}</h3>
-            <h3>{detail.height}</h3>
-            <h4>{detail.weight}</h4>
-            {detail.type?.map(type => <h3 key={detail.id}>
+            <h3>Hp : {detail.health}</h3>
+            <h3>Ataque : {detail.attack}</h3>
+            <h3>Defensa : {detail.defense}</h3>
+            <h3>Velocidad : {detail?.speed}</h3>
+            <h3>Altura : {detail.height}</h3>
+            <h4>Peso : {detail.weight}</h4>
+            {detail.types?.length === 2 ? <h4>Tipos</h4> : <h4>Tipo</h4>}
+            {detail.types?.map(type => <h3 key={detail.id}>
                 {type}
             </h3>)}
         </div>

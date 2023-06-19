@@ -1,30 +1,46 @@
-const getAllPokemonsApi = require("../controllers/getAllPokemon.js")
+const getAllPokemonsApi = require("../controllers/getAllPokemon.js");
 const getDetailPokemon = require("../controllers/getDetailPokemon.js");
-const getPokemonByName = require("../controllers/getPokemonByName.js");
+const getPokemonsByName = require("../controllers/getPokemonsByName.js");
+const getPokemonsByType = require("../controllers/getPokemonsByType.js");
+const getPokemonsByOrder = require("../controllers/getPokemonsByOrder.js");
 
 const getPokemon = async (req, res) => {
-    const { name, type } = req.query
-    const pokemon = await getAllPokemonsApi()
+    const { name, type, order } = req.query;
+
     try {
-        if (!name && !type) {
-            return res.status(200).json(pokemon)
+        let pokemons = await getAllPokemonsApi();
+
+        if (!name && !type && !order) {
+            return res.status(200).json({ pokemons });
         }
-        const pokemonByName = await getPokemonByName(pokemon, name, type)
-        return res.status(200).json(pokemonByName)
+
+        if (type) {
+            pokemons = getPokemonsByType(pokemons, type);
+        }
+
+        if (name) {
+            pokemons = getPokemonsByName(pokemons, name);
+        }
+
+        if (order) {
+            pokemons = getPokemonsByOrder(pokemons, order);
+        }
+
+        return res.status(200).json({ pokemons });
     } catch (error) {
-        return res.status(200).json(error.message)
+        return res.status(204).json(error.message);
     }
 };
+
 const getPokemonDetailHandler = async (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
 
     try {
-        const pokemonDetail = await getDetailPokemon(id)
-        return res.status(200).json(pokemonDetail)
+        const pokemonDetail = await getDetailPokemon(id);
+        return res.status(200).json(pokemonDetail);
     } catch (error) {
-        return res.status(404).json(error.message)
+        return res.status(204).json(error.message);
     }
-}
-
+};
 
 module.exports = { getPokemon, getPokemonDetailHandler };

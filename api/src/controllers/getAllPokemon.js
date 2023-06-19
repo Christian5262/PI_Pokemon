@@ -32,7 +32,7 @@ const getPokemonsApi = async () => {
                     speed: pokemon.stats[5].base_stat,
                     height: pokemon.height,
                     weight: pokemon.weight,
-                    type: pokemon.types.map(type =>
+                    types: pokemon.types.map(type =>
                         type.type.name
                     )
                 }

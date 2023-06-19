@@ -9,10 +9,10 @@ const Paginate = ({ totalPages, page, handleChangePage }) => {
         <div>
 
             <button disabled={page === totalPages} onClick={() => { handleChangePage(page + 1) }}>increase</button>
-            <button >firstPage</button>
+            <button onClick={() => {handleChangePage(0)}}>firstPage</button>
             <p>page{harcodeo}of{totalPages}</p>
             <button onClick={() =>{ handleChangePage(page - 1) }}>decrement</button>
-            <button>lastPage</button>
+            <button onClick={() => {handleChangePage(totalPages)}}>lastPage</button>
         </div >
     )
 }

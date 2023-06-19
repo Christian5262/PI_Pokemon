@@ -25,7 +25,7 @@ const getDetailPokemon = async (id) => {
         speed: pokemon.stats[3].base_stat,
         height: pokemon.height,
         weight: pokemon.weight,
-        type: pokemon.types.map(type =>
+        types: pokemon.types.map(type =>
             type.type.name
         )
     }

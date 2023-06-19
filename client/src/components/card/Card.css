@@ -1,0 +1,250 @@
+:root {
+    --color-fire: #ff7402;
+    --color-grass: #9bcc50;
+    --color-steel: #9eb7b8;
+    --color-water: #4592c4;
+    --color-psychic: #f366b9;
+    --color-ground: #ab9842;
+    --color-ice: #51c4e7;
+    --color-flying: #3dc7ef;
+    --color-ghost: #4d5b64;
+    --color-normal: #a4acaf;
+    --color-poison: #7e0058;
+    --color-rock: #a38c21;
+    --color-fighting: #d56723;
+    --color-dark: #707070;
+    --color-bug: #729f3f;
+    --color-dragon: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+    --color-electric: #bba909;
+    --color-fairy: #fdb9e9;
+    --color-shadow: #7b62a3;
+    --color-unknow: #757575;
+
+    --color-primary: #006d77;
+    --color-primary-hover: #83c5be;
+}
+
+.normal {
+    background-color: var(--color-normal);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.fire {
+    background-color: var(--color-fire);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.water {
+    background-color: var(--color-water);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.grass {
+    background-color: var(--color-grass);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.electric {
+    background-color: var(--color-electric);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.ice {
+    background-color: var(--color-ice);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.fighting {
+    background-color: var(--color-fighting);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.poison {
+    background-color: var(--color-poison);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.ground {
+    background-color: var(--color-ground);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.flying {
+    background-color: var(--color-flying);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.psychic {
+    background-color: var(--color-psychic);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.bug {
+    background-color: var(--color-bug);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.rock {
+    background-color: var(--color-rock);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.ghost {
+    background-color: var(--color-ghost);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.dark {
+    background-color: var(--color-dark);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.dragon {
+    background-color: var(--color-dragon);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 800;
+    text-transform: uppercase;
+
+}
+
+.steel {
+    background-color: var(--color-steel);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.fairy {
+    background-color: var(--color-fairy);
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.types_contain {
+    display: inline-flex;
+    gap: 5rem;
+    inline-size: 35%;
+    
+}
+
+
+.card_pokemon {
+    cursor: pointer;
+    text-decoration: none;
+    background-color: aliceblue;
+    height: 40vh;
+    border-radius: 10px;
+    padding-block: 0.85;
+    box-shadow: 0 0 3rem -0.85 rgb(0, 0, 0, .25);
+}
+
+.title-contain{
+
+}
+
+.h2{
+    color: black;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+.img{
+    height: 100px;
+    width: 100px;
+}
+
+.tipo{
+    height: 40000px;
+}

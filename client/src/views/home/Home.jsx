@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Cards from "../../components/cards/Cards";
 import { useDispatch, useSelector } from "react-redux";
 import { getsPokemon } from "../../redux/actions";
 import Paginate from "../../components/Paginate/Paginate";
 import NavBar from "../NavBar/NavBar";
 import { useSearchParams } from "react-router-dom";
+import { PAGES } from "../../utils/constants";
 
 
 const Home = () => {
@@ -27,21 +28,25 @@ const Home = () => {
     }
 
     const handleChangePage = (page) => {
-        searchParams.set("page", page )
+        searchParams.set("page", page)
         setSearchParams(searchParams)
     }
 
 
     useEffect(() => {
         dispatch(getsPokemon())
-    }, [dispatch])
+        if (!searchParams.get(PAGES)) {
+            searchParams.set(PAGES, 1)
+            setSearchParams(searchParams)
+        }
+    }, [dispatch, searchParams, setSearchParams])
 
 
     return (
         <div>
             <NavBar />
             <Cards pokemonInPage={pokemonInPage} page={page} />
-            <Paginate totalPages={totalPages} page={page} handleChangePage={handleChangePage} />
+            {totalPages > 1 && <Paginate totalPages={totalPages} page={page} handleChangePage={handleChangePage} />}
         </div>
     )
 }
