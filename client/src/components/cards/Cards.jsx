@@ -13,7 +13,7 @@ const Cards = ({ pokemonInPage, page }) => {
     return (
         <div className="card_list">
             {
-                pokemonInPage[page]?.map(pokemon => {
+                pokemonInPage[page - 1]?.map(pokemon => {
                     return (
                         <Card
                             key={pokemon.id}

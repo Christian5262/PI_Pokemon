@@ -25,7 +25,7 @@ const getPokemonsApi = async () => {
                 const pokemonInfo = {
                     id: pokemon.id,
                     name: pokemon.name,
-                    imagen: pokemon.sprites.other.dream_world.front_default || pokemon.sprites.other["official-artwork"].front_default,
+                    image: pokemon.sprites.other.dream_world.front_default || pokemon.sprites.other["official-artwork"].front_default,
                     health: pokemon.stats[0].base_stat,
                     attack: pokemon.stats[1].base_stat,
                     defense: pokemon.stats[2].base_stat,
@@ -51,11 +51,29 @@ const getPokemonsApi = async () => {
 }
 
 const getPokemonDb = async () => {
-    return await Pokemon.findAll({
+    const pokemon = await Pokemon.findAll({
         include: {
             model: Type,
             attributes: ["name"]
         }
+    })
+    return pokemon.map(poke => {
+        return (
+            {
+                id: poke.id,
+                name: poke.name,
+                image: poke.image,
+                health: poke.health,
+                attack: poke.attack,
+                defense: poke.defense,
+                speed: poke.speed,
+                height: poke.height,
+                weight: poke.weight,
+                types: poke.types.map(type =>
+                    type.name
+                )
+            }
+        )
     })
 }
 

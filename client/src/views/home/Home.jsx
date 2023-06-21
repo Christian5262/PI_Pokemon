@@ -6,6 +6,7 @@ import Paginate from "../../components/Paginate/Paginate";
 import NavBar from "../NavBar/NavBar";
 import { useSearchParams } from "react-router-dom";
 import { PAGES } from "../../utils/constants";
+import "./Home.css"
 
 
 const Home = () => {
@@ -28,22 +29,24 @@ const Home = () => {
     }
 
     const handleChangePage = (page) => {
-        searchParams.set("page", page)
+        searchParams.set(PAGES, page)
         setSearchParams(searchParams)
     }
 
 
     useEffect(() => {
         dispatch(getsPokemon())
-        if (!searchParams.get(PAGES)) {
+    }, [dispatch])
+
+    useEffect(() => {
+        if (!searchParams.has(PAGES)) {
             searchParams.set(PAGES, 1)
             setSearchParams(searchParams)
         }
-    }, [dispatch, searchParams, setSearchParams])
-
+    }, [searchParams, setSearchParams])
 
     return (
-        <div>
+        <div className="fondo">
             <NavBar />
             <Cards pokemonInPage={pokemonInPage} page={page} />
             {totalPages > 1 && <Paginate totalPages={totalPages} page={page} handleChangePage={handleChangePage} />}

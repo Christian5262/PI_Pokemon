@@ -1,9 +1,10 @@
+
 const getPokemonsByType = (pokemons, type) => {
     const pokemonsTotal = pokemons.filter((pokemon) =>
-        pokemon.type.includes(type.toLowerCase())
+        pokemon.types.includes(type.toLowerCase())
     );
 
-    if (!pokemonsTotal.length) throw Error("No hay pokemones con ese nombre");
+    if (type === "all") return pokemons
 
     return pokemonsTotal;
 };

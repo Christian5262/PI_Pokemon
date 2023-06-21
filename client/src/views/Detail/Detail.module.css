@@ -1,0 +1,188 @@
+.normal {
+    background-color: var(--color-normal);
+
+}
+
+.fire {
+    background-color: var(--color-fire);
+
+}
+
+.water {
+    background-color: var(--color-water);
+
+}
+
+.grass {
+    background-color: var(--color-grass);
+
+}
+
+.electric {
+    background-color: var(--color-electric);
+
+}
+
+.ice {
+    background-color: var(--color-ice);
+
+}
+
+.fighting {
+    background-color: var(--color-fighting);
+
+}
+
+.poison {
+    background-color: var(--color-poison);
+
+}
+
+.ground {
+    background-color: var(--color-ground);
+
+}
+
+.flying {
+    background-color: var(--color-flying);
+
+}
+
+.psychic {
+    background-color: var(--color-psychic);
+
+}
+
+.bug {
+    background-color: var(--color-bug);
+
+}
+
+.rock {
+    background-color: var(--color-rock);
+
+}
+
+.ghost {
+    background-color: var(--color-ghost);
+
+}
+
+.dark {
+    background-color: var(--color-dark);
+
+}
+
+.dragon {
+    background-color: var(--color-dragon);
+
+
+}
+
+.steel {
+    background-color: var(--color-steel);
+
+}
+
+.fairy {
+    background-color: var(--color-fairy);
+}
+
+
+.buttonHome {
+    display: flex;
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+}
+
+
+.buttonHome:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.pokemon {
+    position: relative;
+    height: fit-content;
+    max-width: 400px;
+    border-radius: 4px;
+    color: #000;
+    text-align: center;
+    top: -15px;
+    padding: 12px;
+    margin: 0 auto;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(41,45,41,0.3981967787114846) 0%, rgba(0,212,255,1) 100%);
+    border: 1px solid black;
+    box-shadow: 3px 6px 24px 0px rgba(0,0,0,0.75);
+}
+
+.numberId > h1{
+    font-size: 40px;
+}
+
+.pokemonTypes {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.pokemonTypes > h3 {
+    text-transform: capitalize;
+}
+
+.pokemonImage {
+    position: relative;
+    margin: 10px auto;
+    border: 1px solid black;
+}
+
+.pokemonImage>img {
+    height: 220px;
+    width: 220px;
+}
+
+.pokemonStats {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.pokemonCondition {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.pokemonType {
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+    border: 1px groove black;
+}
+
+.pokemonType>h3 {
+    text-transform: uppercase;
+    color: black;
+}

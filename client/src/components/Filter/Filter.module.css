@@ -1,0 +1,26 @@
+.background {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.pokemon {
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.typeStyle {
+    padding: .1rem;
+    border-radius: 5px;
+    border: 1px solid;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 0, 0, 0.3981967787114846) 0%, rgba(21, 129, 149, 1) 49%, rgba(18, 142, 166, 1) 58%, rgba(0, 212, 255, 1) 100%);
+}
+
+.typeStyle > label {
+    text-align: center;
+}

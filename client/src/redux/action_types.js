@@ -1,9 +1,5 @@
 export const GET_POKEMON = "GET_POKEMON";
 export const GET_DETAIL_POKEMON = "GET_DETAIL_POKEMON";
-export const GET_POKEMON_NAME = "GET_POKEMON_NAME"
 export const POST_POKEMON = "POST_POKEMON";
 export const GET_TYPES = "GET_TYPES";
-export const FILTER_POKEMONS = "FILTER_POKEMONS";
-export const ORDER_POKEMONS = "ORDER_POKEMONS";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
-export const CURRENT_PAGE = "CURRENT_PAGE"

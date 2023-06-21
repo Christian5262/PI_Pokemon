@@ -1,0 +1,174 @@
+.typeCard {
+    color: black;
+    padding: .25rem .5rem;
+    border-radius: 100vmax;
+    font-size: 0.85;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.normal {
+    background-color: var(--color-normal);
+
+}
+
+.fire {
+    background-color: var(--color-fire);
+
+}
+
+.water {
+    background-color: var(--color-water);
+
+}
+
+.grass {
+    background-color: var(--color-grass);
+
+}
+
+.electric {
+    background-color: var(--color-electric);
+
+}
+
+.ice {
+    background-color: var(--color-ice);
+
+}
+
+.fighting {
+    background-color: var(--color-fighting);
+
+}
+
+.poison {
+    background-color: var(--color-poison);
+
+}
+
+.ground {
+    background-color: var(--color-ground);
+
+}
+
+.flying {
+    background-color: var(--color-flying);
+
+}
+
+.psychic {
+    background-color: var(--color-psychic);
+
+}
+
+.bug {
+    background-color: var(--color-bug);
+
+}
+
+.rock {
+    background-color: var(--color-rock);
+
+}
+
+.ghost {
+    background-color: var(--color-ghost);
+
+}
+
+.dark {
+    background-color: var(--color-dark);
+
+}
+
+.dragon {
+    background-color: var(--color-dragon);
+
+
+}
+
+.steel {
+    background-color: var(--color-steel);
+
+}
+
+.fairy {
+    background-color: var(--color-fairy);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+
+
+}
+
+.container>h2 {
+    opacity: 0.5;
+}
+
+.container:hover img {
+    transform: scale(120%);
+    transition: all 300ms ease-in-out;
+}
+
+.typesContain {
+    display: flex;
+    justify-content: space-between;
+    align-content:space-between;
+    margin: 0 auto;
+
+}
+
+
+.cardPokemon {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 64px 8px 8px;
+    border-radius: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.typeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border-radius: 10px;
+    padding: 8px;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.4) ;
+}
+
+.titleContain {}
+
+.titleContain>h2 {
+    color: black;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+
+.image {
+    height: 40%;
+    width: 100%;
+    position: relative;
+    top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.image>img {
+    object-fit: contain;
+    height: 200px;
+    width: 200px;
+}

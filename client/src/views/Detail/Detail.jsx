@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useLocation, useNavigate, useParams, useSearchParams, } from "react-router-dom";
 import { cleanDetailPokemon, currentPage, getDetailPokemon } from "../../redux/actions";
+import styles from "./Detail.module.css"
 
 
 const Detail = () => {
@@ -18,31 +19,44 @@ const Detail = () => {
         navigate(-1)
     }
 
+    console.log(detail.image);
+
 
     useEffect(() => {
-        dispatch(currentPage(id))
         dispatch(getDetailPokemon(id))
         return () => dispatch(cleanDetailPokemon())
     }, [id])
 
-    const previousPath = localStorage.getItem("previousPath") || "/"
     return (
-        <div className="pokemon">
+        <div style={{ "background-color": "var(--color-background)" }}>
+            <button className={styles.buttonHome} onClick={() => { handleBack() }}>Back To Home</button>
+            <div className={styles.pokemon}>
 
-            <button className="button_home" onClick={() => { handleBack() }}>Back To Home</button>
-            <h1>{"#"+detail.id}</h1>
-            <h1>{detail.name}</h1>
-            <img src={detail.imagen} alt={detail.name} />
-            <h3>Hp : {detail.health}</h3>
-            <h3>Ataque : {detail.attack}</h3>
-            <h3>Defensa : {detail.defense}</h3>
-            <h3>Velocidad : {detail?.speed}</h3>
-            <h3>Altura : {detail.height}</h3>
-            <h4>Peso : {detail.weight}</h4>
-            {detail.types?.length === 2 ? <h4>Tipos</h4> : <h4>Tipo</h4>}
-            {detail.types?.map(type => <h3 key={detail.id}>
-                {type}
-            </h3>)}
+                <div className={styles.numberId}>
+                    <h1>{"#" + detail.id}</h1>
+                </div>
+                <div className={styles.pokemonTypes}>
+                    <h3>Hp {detail.health}</h3>
+                    <h3>{detail.name}</h3>
+                </div>
+                <div className={`${styles.pokemonImage}  ${detail.types && styles[detail.types[0]]}`}>
+                    <img src={detail.image} alt={detail.name} />
+                </div>
+                {detail.types?.map(type => <div className={`${styles[type]} ${styles.pokemonType}`} key={type}><h3>
+                    {type}
+                </h3>
+                </div>)}
+                <div className={styles.pokemonStats}>
+
+                    <h3>Ataque {detail.attack}</h3>
+                    <h3>Defensa {detail.defense}</h3>
+                    <h3>Velocidad {detail?.speed}</h3>
+                </div>
+                <div className={styles.pokemonCondition}>
+                    <h4>Altura : {detail.height}</h4>
+                    <h4>Peso : {detail.weight}</h4>
+                </div>
+            </div>
         </div>
     );
 }

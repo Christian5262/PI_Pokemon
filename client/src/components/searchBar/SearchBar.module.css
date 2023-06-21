@@ -1,0 +1,45 @@
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 250px;
+    margin: 0 auto;
+
+    border: 1px solid black;
+    padding: 7px 10px;
+    border-radius: 20px;
+}
+
+.box>input {
+    font-family: inherit;
+    width: 175px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    background-color: #ededed;
+}
+
+.buttonBox {
+    margin: 5px;
+}
+
+.buttonBox>button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 25px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 5px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    background-color: grey;
+    color: black;
+
+}
+
+.buttonBox>button:hover {
+    background-color: grey;
+    color: white
+}

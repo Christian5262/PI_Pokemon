@@ -4,6 +4,8 @@ import SearchBar from "../../components/searchBar/SearchBar";
 import { useDispatch } from "react-redux";
 import { getTypes } from "../../redux/actions";
 import Sort from "../../components/Sort/Sort";
+import { Link } from "react-router-dom";
+import styles from "./NavBar.module.css"
 
 const NavBar = () => {
 
@@ -15,11 +17,14 @@ const NavBar = () => {
 
 
     return (
-        <div>
-            <SearchBar />
-            <Filter />
-            <Sort />
-        </div>
+        <>
+            <Link to="/create"><button>Create Pokemon</button></Link>
+            <div className={styles.container}>
+                <SearchBar />
+                <Filter />
+                <Sort />
+            </div>
+        </>
     )
 }
 
