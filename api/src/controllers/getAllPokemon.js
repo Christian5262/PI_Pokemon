@@ -12,7 +12,8 @@ const getPokemonsApi = async () => {
     try {
         let pokemons = []
         let urlApi = URL
-        while (urlApi) {
+        let i = 0
+        while (i < 10) {
             const { data } = await axios.get(urlApi)
             let pokemonsinApi = data.results.map(async (pokemon) => {
                 const { data } = await axios.get(pokemon.url)
@@ -40,6 +41,7 @@ const getPokemonsApi = async () => {
             }
             //Ahora la url, va a ser en lo que este en la propiedad de next
             urlApi = data.next
+            i++
         }
         pokemonInCache = pokemons
         return pokemons
@@ -84,4 +86,4 @@ const getAllPokemon = async () => {
     return allPokemons
 }
 
-module.exports = getAllPokemon
+module.exports = { getPokemonsApi, getPokemonDb, getAllPokemon }

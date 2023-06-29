@@ -1,0 +1,14 @@
+.contain{
+    display: flex;
+    gap: 20px;
+}
+
+.order{
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 2px;
+}
+
+.origin{
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 2px;
+}

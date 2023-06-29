@@ -5,16 +5,24 @@ import {
     GET_POKEMON,
     GET_DETAIL_POKEMON,
     CLEAN_DETAIL,
+    ACTIVE,
+    ERROR,
+    CLEAN_MESSAGE
 
 } from "./action_types";
-import { NAME_PARAM, TYPE_PARAM, ORDER_PARAM } from "../utils/constants";
+import { NAME_PARAM, TYPE_PARAM, ORDER_PARAM, ORIGIN_PARAM } from "../utils/constants";
 
 export const getsPokemon = () => {
     const url = new URL("http://localhost:3001/pokemons");
     const queryString = window.location.search;
     const searchParams = new URLSearchParams(queryString);
 
-    const [name, type, order] = [searchParams.get(NAME_PARAM), searchParams.get(TYPE_PARAM), searchParams.get(ORDER_PARAM)];
+    const [origin, name, type, order] = [searchParams.get(ORIGIN_PARAM), searchParams.get(NAME_PARAM), searchParams.get(TYPE_PARAM), searchParams.get(ORDER_PARAM)];
+
+    if (origin) {
+        url.searchParams.set(ORIGIN_PARAM, origin)
+    }
+
     if (name) {
         url.searchParams.set(NAME_PARAM, name);
     }
@@ -34,7 +42,10 @@ export const getsPokemon = () => {
                 payload: data.pokemons,
             });
         } catch (error) {
-            console.log(error);
+            return dispatch({
+                type: ERROR,
+                payload: error.response.data
+            })
         }
 
     };
@@ -45,14 +56,18 @@ export const getsPokemon = () => {
 export const getDetailPokemon = (id) => {
     const endpoint = `http://localhost:3001/pokemons/${id}`;
     return async (dispatch) => {
-        const { data } = await axios.get(endpoint);
-        return dispatch({
-            type: GET_DETAIL_POKEMON,
-            payload: data,
-        });
-    };
-};
+        try {
+            const { data } = await axios.get(endpoint);
+            return dispatch({
+                type: GET_DETAIL_POKEMON,
+                payload: data,
+            });
+        } catch (error) {
+            console.log(error);;
+        }
 
+    };
+}
 export const cleanDetailPokemon = () => {
     return async (dispatch) => {
         return dispatch({
@@ -61,17 +76,29 @@ export const cleanDetailPokemon = () => {
     };
 };
 
+export const cleanMessage = () => {
+    return async (dispatch) => {
+        return dispatch({
+            type: CLEAN_MESSAGE
+        })
+    }
+}
 
 export const postPokemon = (pokemon) => {
     const endpoint = "http://localhost:3001/pokemons";
     return async (dispatch) => {
-        const { data } = await axios.post(endpoint, pokemon);
-        return dispatch({
-            type: POST_POKEMON,
-            payload: data,
-        });
+        try {
+            const { data } = await axios.post(endpoint, pokemon);
+            return dispatch({
+                type: POST_POKEMON,
+                payload: data,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+
     };
-};
+}
 
 export const getTypes = () => {
     const endpoint = "http://localhost:3001/types";
@@ -81,8 +108,11 @@ export const getTypes = () => {
     };
 };
 
-
-
+export const isActive = (value) => {
+    return dispatch => {
+        return dispatch({ type: ACTIVE, payload: value })
+    }
+}
 
 
 

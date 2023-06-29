@@ -1,4 +1,4 @@
-import { POST_POKEMON, GET_TYPES, GET_POKEMON, GET_DETAIL_POKEMON, CLEAN_DETAIL, } from "./action_types";
+import { POST_POKEMON, GET_TYPES, GET_POKEMON, GET_DETAIL_POKEMON, CLEAN_DETAIL, ACTIVE, ERROR, CLEAN_MESSAGE, } from "./action_types";
 import { currentPage } from "./actions";
 
 
@@ -8,7 +8,8 @@ const initialState = {
     copyPokemon: [],
     types: [],
     detailPokemon: {},
-    type: ""
+    isActive: null,
+    errorMessage: ""
 
 }
 
@@ -45,11 +46,24 @@ const reducer = (state = initialState, actions) => {
                 ...state,
                 types: actions.payload
             }
-
+        case ACTIVE:
+            return {
+                ...state,
+                isActive: actions.payload
+            }
+        case ERROR:
+            return {
+                ...state,
+                errorMessage: actions.payload
+            }
+        case CLEAN_MESSAGE:
+            return {
+                ...state,
+                errorMessage: ""
+            }
         default:
             return {
                 ...state,
-                currentPage: actions.payload
             }
     }
 }

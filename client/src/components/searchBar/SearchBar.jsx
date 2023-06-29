@@ -1,16 +1,23 @@
-import { useDispatch } from "react-redux";
-import { getsPokemon } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { cleanMessage, getsPokemon } from "../../redux/actions";
 import { useSearchParams } from "react-router-dom";
 import { NAME_PARAM, TYPE_PARAM, PAGES } from "../../utils/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./SearchBar.module.css"
 
 const SearchBar = () => {
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
     const [input, setInput] = useState("")
+    const message = useSelector(state => state.errorMessage)
 
-    console.log(searchParams.toString());
+
+    useEffect(() => {
+        if (message) {
+            alert(message)
+            dispatch(cleanMessage())
+        }
+    }, [])
 
     const handleChange = (value) => {
         setInput(value)
@@ -32,12 +39,12 @@ const SearchBar = () => {
     return (
         <div className={styles.background}>
             <div className={styles.box}>
-                    <input
-                        type="text"
-                        placeholder="Busca el pokemon"
-                        value={input}
-                        onChange={(e) => handleChange(e.target.value)}
-                    />
+                <input
+                    type="text"
+                    placeholder="Busca el pokemon"
+                    value={input}
+                    onChange={(e) => handleChange(e.target.value)}
+                />
             </div>
             <div className={styles.buttonBox}>
                 <button onClick={() => { onSubmit(input) }}>Enviar</button>

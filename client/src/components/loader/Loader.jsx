@@ -1,7 +1,15 @@
+import { useEffect } from "react";
 import styles from "./Loader.module.css"
 
+
 export default function Loader() {
-    return <div className={styles.loader}>
+
+    useEffect(() => {
+        return
+    })
+    return (<div className={styles.h1}>
         <h1>Cargando...</h1>
-    </div>;
-}
+        <div className={styles.loader}>
+        </div>
+    </div>)
+};

@@ -1,18 +1,19 @@
-const getAllPokemonsApi = require("../controllers/getAllPokemon.js");
+const { getPokemonsApi, getPokemonDb, getAllPokemon } = require("../controllers/getAllPokemon.js");
 const getDetailPokemon = require("../controllers/getDetailPokemon.js");
 const getPokemonsByName = require("../controllers/getPokemonsByName.js");
 const getPokemonsByType = require("../controllers/getPokemonsByType.js");
 const getPokemonsByOrder = require("../controllers/getPokemonsByOrder.js");
+const filterByOrigin = require("../controllers/getOriginPokemons.js");
 
 const getPokemon = async (req, res) => {
-    const { name, type, order } = req.query;
+    const { name, type, order, origin } = req.query;
 
     try {
-        let pokemons = await getAllPokemonsApi();
-
+        let pokemons = await filterByOrigin(origin);
         if (!name && !type && !order) {
             return res.status(200).json({ pokemons });
         }
+
 
         if (type) {
             pokemons = getPokemonsByType(pokemons, type);
@@ -28,7 +29,7 @@ const getPokemon = async (req, res) => {
 
         return res.status(200).json({ pokemons });
     } catch (error) {
-        return res.status(204).json(error.message);
+        return res.status(404).json(error.message);
     }
 };
 

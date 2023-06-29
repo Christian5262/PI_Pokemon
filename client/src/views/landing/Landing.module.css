@@ -1,23 +1,114 @@
-.contain{
-    background-color: aqua;
-    background-image: url("../../images/6776c-clickwallpapers-pokemon-4k-img2-scaled-1.jpg");
+
+
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(182, 66, 66);
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.contain {
+    border: 1px solid black;
+    background-image: url("../../images/images\ \(4\).jpg");
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center center;
-    height: 2000px;
-    background-attachment: fixed ;
-    background-size: cover;
+    display: flex;
+    width: 90%;
+    height: 95%;
+    padding: auto auto;
+    margin: 0 auto;
+    box-shadow: 10px 5px 10px rgb(0, 0, 0, 0.25);
+    border-radius: 20px;
+    background-size: 100%;
     position: relative;
+
 }
 
-.button{
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 60px;
+    left: 100px;
+    width: 25rem;
     position: absolute;
-    top : 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
+    border: 0.1em solid black;
+    border-radius: 20px;
+    background-color: aliceblue;
+    padding: 10px;
+    margin: 10px;
 }
 
-.editButton{
+.text>h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    text-shadow: 1px 1px 1px black;
+}
+
+.button {
+    position: absolute;
+    left: 20%;
+    top: 60%;
+
+}
+
+.button > button {
+
+    background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(13, 14, 13, 0.2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button > button :hover {
+    box-shadow: rgba(250, 250, 250, 0.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  }
+
+.contain > img {
+
+    position: absolute;
+    height: 500px;
+    width: 400px;
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+    left: 60%;
+    top: 10%;
+}
+
+.editButton {
     border-radius: 30px;
     height: 5vh;
 }
+
+.parrafo {
+    position: absolute;
+    top: 40%;
+    left: 14%
+}
+
+.parrafo > p{
+    font-size: 25px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+}
+
+

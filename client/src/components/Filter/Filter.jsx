@@ -14,7 +14,7 @@ const Filter = () => {
     const types = useSelector((state) => state.types);
     //   const allPokemons = useSelector((state) => state.copyPokemon);
 
-
+    const active = useSelector(state => state.isActive)
     const handleSelect = (value) => {
         searchParams.set(TYPE_PARAM, value);
         searchParams.set(PAGES, 1)
@@ -27,18 +27,18 @@ const Filter = () => {
     };
 
     return (
-        <div className={styles.background}>
+        <div className={`${styles.background} ${active && styles.active}`}>
             <div className={styles.pokemon}>
                 <div className={styles.typeStyle}>
                     <label htmlFor="">
-                        Todos los pokemons
+                        Todos
                         <input type="radio" value="all" name="Tipos" checked={select === "all"} onChange={(event) => handleSelect(event.target.value)} />
                     </label>
                 </div>
                 {types?.map((type) => {
                     return (
                         <div className={styles.typeStyle}>
-                            <label key={type.id}>
+                            <label className={styles[type.name]} key={type.id}>
                                 {type.name}
                                 <input
                                     type="radio"

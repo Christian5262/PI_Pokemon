@@ -12,7 +12,9 @@ const getPokemonsByOrder = (pokemons, order) => {
     if (order === "WEAKER") {
         return pokemons.sort((a, b) => a.attack - b.attack);
     }
-
-    return pokemons;
+    else{
+        return pokemons;
+    }
+    
 };
 module.exports = getPokemonsByOrder;

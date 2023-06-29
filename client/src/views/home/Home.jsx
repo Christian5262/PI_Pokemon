@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import Cards from "../../components/cards/Cards";
 import { useDispatch, useSelector } from "react-redux";
-import { getsPokemon } from "../../redux/actions";
+import { cleanMessage, getsPokemon } from "../../redux/actions";
 import Paginate from "../../components/Paginate/Paginate";
 import NavBar from "../NavBar/NavBar";
 import { useSearchParams } from "react-router-dom";
 import { PAGES } from "../../utils/constants";
-import "./Home.css"
-
+import Filter from "../../components/Filter/Filter";
+import Sort from "../../components/Sort/Sort";
+import styles from "./Home.module.css"
+import { isActive } from "../../redux/actions";
+import Loader from "../../components/loader/Loader";
 
 const Home = () => {
 
@@ -20,6 +23,7 @@ const Home = () => {
     const pokemonInPage = []
     const page = Number(searchParams.get("page"))
 
+    const message = useSelector(state => state.errorMessage)
 
     const perPage = 12
     const totalPages = Math.floor(pokemons.length / perPage)
@@ -32,10 +36,12 @@ const Home = () => {
         searchParams.set(PAGES, page)
         setSearchParams(searchParams)
     }
-
+    console.log(!!message);
 
     useEffect(() => {
-        dispatch(getsPokemon())
+        if (!pokemons.length) {
+            dispatch(getsPokemon())
+        }
     }, [dispatch])
 
     useEffect(() => {
@@ -45,13 +51,43 @@ const Home = () => {
         }
     }, [searchParams, setSearchParams])
 
+    const [count, setCount] = useState(0)
+
+    const buttonEvent = () => {
+        if (count === 1) {
+            setCount(-1)
+            dispatch(isActive(false))
+        }
+        else {
+            dispatch(isActive(true))
+            setCount(+1)
+        }
+    }
+
+    if (!pokemons.length) {
+        return (
+            <div className={styles.fondo}>
+                <NavBar />
+                <Loader />
+            </div>
+        )
+    }
+
     return (
-        <div className="fondo">
+        <div className={styles.fondo}>
             <NavBar />
+            <div className={styles.filtersContainer}>
+
+                <button onClick={() => buttonEvent()}>Filtrar Pokemones</button>
+                <Filter />
+                <Sort />
+            </div>
             <Cards pokemonInPage={pokemonInPage} page={page} />
-            {totalPages > 1 && <Paginate totalPages={totalPages} page={page} handleChangePage={handleChangePage} />}
+            <Paginate totalPages={totalPages} page={page} handleChangePage={handleChangePage} />
         </div>
     )
+
+
 }
 
 export default Home;
